@@ -37,7 +37,7 @@ namespace PG
         public List<MeshCollider> IgnoreDeformColliders = new List<MeshCollider>();
         public List<Transform> IgnoreFindInChildsMeshesAndColliders = new List<Transform>();
 
-        [SerializeField] bool EnableLogAndGizmo;                     //Ñollision log and gizmo for debug.
+        [SerializeField] bool EnableLogAndGizmo;                     //ï¿½ollision log and gizmo for debug.
 
 #pragma warning restore 0649
         public Transform TR => transform;
@@ -336,7 +336,7 @@ namespace PG
             Vector3 localDamagePoint;
             Vector3 localDamageForceAndSurfaceDot;
 
-            //Ñalculate all the necessary values.
+            //ï¿½alculate all the necessary values.
             Vector3 clampForce = Vector3.ClampMagnitude(damageForce, MaxCollisionMagnitude);                                //Limiting force if force exceeds maximum.
             Vector3 normalizedForce = clampForce.normalized;
             float forceMagFactor = clampForce.magnitude * DamageFactor * data.MassFactor;                                   //Accept all existing factors.
@@ -588,7 +588,7 @@ namespace PG
         IEnumerator SmoothRestoreCar ()
         {
             RB.mass = InitialMass;
-            RB.velocity = Vector3.zero;
+            RB.linearVelocity = Vector3.zero;
             RB.angularVelocity = Vector3.zero;
 
             if (MoveCarWhileRestoring)

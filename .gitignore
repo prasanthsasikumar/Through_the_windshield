@@ -79,3 +79,5 @@ crashlytics-build.properties
 .idea/
 # VS Code cache directory
 .vscode/
+
+.utmp

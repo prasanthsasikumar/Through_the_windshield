@@ -1,4 +1,3 @@
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -31,7 +30,7 @@ namespace PG
         public event System.Action AfterResetVehicleAction;                             //Actions are performed after the vehicle is reset.
 
         public Rigidbody RB { get; private set; }
-
+        public Transform SpawnTransform { get; private set; } = null; //Spawn transform, used to store the initial position and rotation of the vehicle for reset.
         public Bounds Bounds { get; private set; }
         public float Size { get; private set; }
         public bool IsPlayerVehicle { get; set; }
@@ -99,6 +98,12 @@ namespace PG
             RB = GetComponent<Rigidbody> ();
             RB.centerOfMass = COM.localPosition;
 
+            SpawnTransform = new GameObject(name + "_SpawnPosition").transform;
+            SpawnTransform.position = transform.position;
+            SpawnTransform.rotation = transform.rotation;
+            SpawnTransform.parent = null; // Make it a root object so it doesn't move with the vehicle
+            DontDestroyOnLoad(SpawnTransform.gameObject); // Optional: Keep it between scene loads
+
             Quaternion startRotation = transform.rotation;
             transform.rotation = Quaternion.identity;
 
@@ -143,9 +148,9 @@ namespace PG
         protected virtual void FixedUpdate ()
         {
             //Calculating body speed and angle
-            CurrentSpeed = RB.velocity.magnitude;
+            CurrentSpeed = RB.linearVelocity.magnitude;
             PrevVelocityAngle = VelocityAngle;
-            Vector3 horizontalLocalVelocity = transform.InverseTransformDirection(RB.velocity).ZeroHeight ();
+            Vector3 horizontalLocalVelocity = transform.InverseTransformDirection(RB.linearVelocity).ZeroHeight ();
             if (horizontalLocalVelocity.sqrMagnitude > 0.01f)
             {
                 VelocityAngle = -Vector3.SignedAngle (horizontalLocalVelocity.normalized, Vector3.forward, Vector3.up);
@@ -190,12 +195,25 @@ namespace PG
         {
             BeforeResetVehicleAction.SafeInvoke ();
 
-            RB.velocity = Vector3.zero;
+            RB.linearVelocity = Vector3.zero;
             RB.angularVelocity = Vector3.zero;
 
-            float y = rotation.eulerAngles.y;
-            position += Vector3.up * 2;
-            rotation = Quaternion.AngleAxis (y, Vector3.up);
+            // Use the spawn transform if available, otherwise use current position with lifted height
+            if (SpawnTransform != null)
+            {
+                position = SpawnTransform.position;
+                if (position.y < 2)
+                {
+                    position += Vector3.up * 2;
+                }
+                rotation = SpawnTransform.rotation;
+            }
+            else
+            {
+                float y = rotation.eulerAngles.y;
+                position += Vector3.up * 2;
+                rotation = Quaternion.AngleAxis (y, Vector3.up);
+            }
 
             AfterResetVehicleAction.SafeInvoke ();
         }
@@ -223,7 +241,7 @@ namespace PG
             //The lines of the direction of the vehicle body and the movement of the vehicle are drawn.
 
             var centerPos = RB.worldCenterOfMass;
-            var velocity = centerPos + (Vector3.ClampMagnitude (RB.velocity, 4));
+            var velocity = centerPos + (Vector3.ClampMagnitude (RB.linearVelocity, 4));
             var forwardPos = transform.TransformPoint (RB.centerOfMass + Vector3.forward * 4);
 
             Gizmos.color = Color.green;

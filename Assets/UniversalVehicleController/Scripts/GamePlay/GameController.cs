@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
@@ -158,6 +158,18 @@ namespace PG
             }
 
             SoundHelper.ChangeSoundTimeScale (Time.timeScale);
+        }
+
+        public void EnableCarInputHandler (bool enable)
+        {
+            var carInputHandlers = FindObjectsByType<CarInputHandler>(FindObjectsSortMode.None);
+            foreach (var handler in carInputHandlers)
+            {
+                if (handler)
+                {
+                    handler.enabled = enable;
+                }
+            }
         }
     }
 

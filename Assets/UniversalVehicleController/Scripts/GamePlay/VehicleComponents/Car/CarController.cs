@@ -48,11 +48,13 @@ namespace PG
             {
                 SteerWheelStartXAngle = SteerWheel.localRotation.eulerAngles.x;
             }
+
+            GetComponent<Rigidbody>().centerOfMass = Vector3.zero;
         }
 
-        private void Start()
+        public void ChangeSize(float size)
         {
-            GetComponent<Rigidbody>().centerOfMass = Vector3.zero;
+            this.transform.localScale = new Vector3(size, size, size);
         }
 
         protected override void FixedUpdate ()

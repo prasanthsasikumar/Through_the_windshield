@@ -80,7 +80,7 @@ namespace PG
             if (AfterJointCreate && ConfigurableJoint && ConnectedToCar)
             {
                 RB.angularVelocity = Vector3.zero;
-                RB.velocity = Vector3.zero;
+                RB.linearVelocity = Vector3.zero;
                 if ((ConnectedToCar.TrailerConnectorPosition.position - TrailerConnectorPosition.position).sqrMagnitude < 0.0025f)
                 {
                     AfterJointCreate = false;

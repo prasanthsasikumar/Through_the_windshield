@@ -224,7 +224,7 @@ namespace PG
             if (ActivePreset.EnableRotation)
             {
                 Vector2 mouseDelta = Vector2.zero;
-                bool needRotate = Car.RB.velocity.ZeroHeight().sqrMagnitude > 0.1f;
+                bool needRotate = Car.RB.linearVelocity.ZeroHeight().sqrMagnitude > 0.1f;
 
                 if (UserControl != null)
                 {
@@ -307,7 +307,7 @@ namespace PG
                     else if (!Car.VehicleIsGrounded && Car.CurrentSpeed > 1 && needRotate)
                     {
                         //If the car is in the air, then the camera rotates towards Velocity
-                        transform.rotation = Quaternion.Lerp (transform.rotation, Quaternion.LookRotation (Car.RB.velocity, Vector3.up), ActivePreset.SetRotationSpeed * Time.deltaTime);
+                        transform.rotation = Quaternion.Lerp (transform.rotation, Quaternion.LookRotation (Car.RB.linearVelocity, Vector3.up), ActivePreset.SetRotationSpeed * Time.deltaTime);
                     }
                     else
                     {

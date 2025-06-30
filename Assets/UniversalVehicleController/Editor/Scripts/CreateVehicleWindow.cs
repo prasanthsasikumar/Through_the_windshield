@@ -720,8 +720,8 @@ namespace PG
                 var selectedRB = SelectedController.GetComponent<Rigidbody>();
                 var refRB = RefController.GetComponent<Rigidbody>();
                 selectedRB.mass = refRB.mass;
-                selectedRB.drag = refRB.drag;
-                selectedRB.angularDrag = refRB.angularDrag;
+                selectedRB.linearDamping = refRB.linearDamping;
+                selectedRB.angularDamping = refRB.angularDamping;
                 selectedRB.interpolation = refRB.interpolation;
             }
 

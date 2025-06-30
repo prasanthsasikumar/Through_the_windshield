@@ -145,7 +145,7 @@ namespace PG
             if (Hinge)
             {
                 Destroy (Hinge);
-                RB.velocity *= 0.5f;
+                RB.linearVelocity *= 0.5f;
             }
 
             foreach (var cKV in CollidersWithState)
@@ -196,8 +196,8 @@ namespace PG
                     RB = gameObject.AddComponent<Rigidbody> ();
                 }
                 RB.mass = Mass;
-                RB.drag = Drag;
-                RB.angularDrag = AngularDrag;
+                RB.linearDamping = Drag;
+                RB.angularDamping = AngularDrag;
 
                 if (DisableCollidersBeetwenLoseAndDetach)
                 {
@@ -210,7 +210,7 @@ namespace PG
                 if (ParentBody)
                 {
                     ParentBody.mass -= Mass;
-                    RB.velocity = ParentBody.GetPointVelocity (TR.position);
+                    RB.linearVelocity = ParentBody.GetPointVelocity (TR.position);
                     RB.angularVelocity = ParentBody.angularVelocity;
 
                     if (Joints.Length > 0)

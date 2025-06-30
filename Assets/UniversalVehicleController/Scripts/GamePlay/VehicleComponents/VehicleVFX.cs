@@ -89,7 +89,7 @@ namespace PG
 
                         var particleVelocity = -wheel.GetHit.forwardDir * wheel.GetHit.forwardSlip;
                         particleVelocity += wheel.GetHit.sidewaysDir * wheel.GetHit.sidewaysSlip;
-                        particleVelocity += Vehicle.RB.velocity;
+                        particleVelocity += Vehicle.RB.linearVelocity;
 
                         emitParams = new EmitParams ();
 
@@ -201,7 +201,7 @@ namespace PG
 
         private void CollisionStay (VehicleController vehicle, Collision collision)
         {
-            if (Vehicle.CurrentSpeed >= 1 && (collision.rigidbody == null || (collision.rigidbody.velocity - vehicle.RB.velocity).sqrMagnitude > 25))
+            if (Vehicle.CurrentSpeed >= 1 && (collision.rigidbody == null || (collision.rigidbody.linearVelocity - vehicle.RB.linearVelocity).sqrMagnitude > 25))
             {
                 PlayCollisionParticles (vehicle, collision);
             }

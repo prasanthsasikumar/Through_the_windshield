@@ -95,7 +95,7 @@ namespace PG
             if (AheadRB)
             {
                 //If the car in front is close, then the speed of the followed car is taken as the desired speed.
-                float aheadRBSpeed = AheadRB.velocity.magnitude;
+                float aheadRBSpeed = AheadRB.linearVelocity.magnitude;
                 desiredSpeed = Mathf.Min (desiredSpeed, Mathf.Lerp (aheadRBSpeed, desiredSpeed, DistanceToAheadRB / ObstacleHitDistance));
             }
 
@@ -192,7 +192,7 @@ namespace PG
             LastMainHitTime = Time.time;
             DistanceToAheadRB = float.MaxValue;
 
-            var direction = (transform.forward + Car.RB.velocity.normalized) * 0.5f;
+            var direction = (transform.forward + Car.RB.linearVelocity.normalized) * 0.5f;
             var position = transform.TransformPoint(new Vector3 (0, HitPointHeight, 0)) + direction * StartPointDistance;
 
             if (Physics.Raycast (position, direction, out MainHit, ObstacleHitDistance, AiDetectionMask))
@@ -216,7 +216,7 @@ namespace PG
                 Gizmos.DrawWireSphere (TargetPoint.Position, 0.5f);
                 Gizmos.DrawWireSphere (TurnPredictionPoint.Position, 0.5f);
 
-                var direction = (transform.forward + Car.RB.velocity.normalized) * 0.5f;
+                var direction = (transform.forward + Car.RB.linearVelocity.normalized) * 0.5f;
                 var position = transform.TransformPoint(new Vector3 (0, HitPointHeight, 0)) + direction * StartPointDistance;
 
                 Gizmos.color = MainHit.collider != null ? Color.red : Color.blue;

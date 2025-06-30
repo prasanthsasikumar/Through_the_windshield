@@ -18,10 +18,10 @@ namespace PG
             public static bool IsMobilePlatform
             {
                 get
-                {
+            {
+                return false; 
 #if UNITY_EDITOR
-                    return false; // In editor, we assume it's not mobile
-                    return UnityEditor.EditorUserBuildSettings.activeBuildTarget == UnityEditor.BuildTarget.Android ||
+                return UnityEditor.EditorUserBuildSettings.activeBuildTarget == UnityEditor.BuildTarget.Android ||
                         UnityEditor.EditorUserBuildSettings.activeBuildTarget == UnityEditor.BuildTarget.iOS;
 #else
                 return Application.isMobilePlatform;

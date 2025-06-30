@@ -99,7 +99,7 @@ namespace PG
             if (AheadRB)
             {
                 //Apply aggressiveness to the desired speed.
-                float aheadRBSpeed = Mathf.Lerp(AheadRB.velocity.magnitude, desiredSpeed, Aggressiveness);
+                float aheadRBSpeed = Mathf.Lerp(AheadRB.linearVelocity.magnitude, desiredSpeed, Aggressiveness);
                 desiredSpeed = Mathf.Min (desiredSpeed, Mathf.Lerp(aheadRBSpeed, desiredSpeed, ((DistanceToAheadCollider - 2) / ObstacleHitDistance).Clamp()));
             }
 

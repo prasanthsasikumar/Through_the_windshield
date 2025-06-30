@@ -79,7 +79,7 @@ namespace PG
             {
                 HandBrake = false;
 
-                var dir = TargetRB.velocity;
+                var dir = TargetRB.linearVelocity;
 
                 TargetPoint = TargetRB.position + dir * OffsetToTargetPoint + dir * SpeedFactorToTargetPoint;
                 TurnPredictionPoint = TargetRB.position + dir * OffsetTurnPrediction + dir * SpeedFactorToTurnPrediction;

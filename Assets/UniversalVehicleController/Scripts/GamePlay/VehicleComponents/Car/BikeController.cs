@@ -59,7 +59,7 @@ namespace PG
         {
             base.FixedUpdate ();
 
-            var currentVelocity = transform.InverseTransformDirection(RB.velocity);
+            var currentVelocity = transform.InverseTransformDirection(RB.linearVelocity);
 
             var gForce = PrevVelocity - currentVelocity;
 
@@ -176,7 +176,7 @@ namespace PG
                     }
                     currentVelocity.z = Mathf.MoveTowards (currentVelocity.z, CarControl.BrakeReverse * -Bike.TargetReverseSpeed, Time.fixedDeltaTime * 5);
                     currentVelocity = transform.TransformDirection (currentVelocity);
-                    RB.velocity = currentVelocity;
+                    RB.linearVelocity = currentVelocity;
                 }
 
                 //Applying calculated AngularVelocity

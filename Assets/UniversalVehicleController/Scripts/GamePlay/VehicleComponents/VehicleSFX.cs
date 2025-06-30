@@ -342,7 +342,7 @@ namespace PG
         /// </summary>
         public void PlayCollisionStayAction (VehicleController vehicle, Collision collision)
         {
-            if (Vehicle.CurrentSpeed >= 1 && (collision.rigidbody == null || (collision.rigidbody.velocity - vehicle.RB.velocity).sqrMagnitude > 25))
+            if (Vehicle.CurrentSpeed >= 1 && (collision.rigidbody == null || (collision.rigidbody.linearVelocity - vehicle.RB.linearVelocity).sqrMagnitude > 25))
             {
                 PlayFrictionSound (collision, collision.relativeVelocity.magnitude);
             }
@@ -367,7 +367,7 @@ namespace PG
             float collisionMagnitude = 0;
             if (collision.rigidbody)
             {
-                collisionMagnitude = (Vehicle.RB.velocity - collision.rigidbody.velocity).magnitude;
+                collisionMagnitude = (Vehicle.RB.linearVelocity - collision.rigidbody.linearVelocity).magnitude;
             }
             else
             {
