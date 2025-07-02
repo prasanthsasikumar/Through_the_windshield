@@ -166,7 +166,7 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Color: {r: 0.7086881, g: 0.38817042, b: 0.36239257, a: 1}
+    - _Color: {r: 0.14901961, g: 0.34117648, b: 0.26666668, a: 1}
     - _ColorLayer_0: {r: 1, g: 1, b: 1, a: 1}
     - _ColorLayer_1: {r: 1, g: 1, b: 1, a: 1}
     - _ColorLayer_2: {r: 1, g: 1, b: 1, a: 1}

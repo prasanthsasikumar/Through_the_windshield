@@ -19387,8 +19387,9 @@ GameObject:
   - component: {fileID: 1480274581}
   - component: {fileID: 1480274580}
   - component: {fileID: 1480274582}
+  - component: {fileID: 1480274583}
   m_Layer: 0
-  m_Name: MenuToggleManager
+  m_Name: GameManagers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19465,6 +19466,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+--- !u!114 &1480274583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1480274579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 041a320497590ef4698045784a5bc22e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultCarMaterial: {fileID: 2100000, guid: 4bd49f81e089f4f4390ed5f3aeadd2f7, type: 2}
+  carPrefab: {fileID: 1703666107}
+  gameController: {fileID: 3252014628470532737}
 --- !u!1001 &1482961563
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19840,6 +19856,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: '[Graphy] VR'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1707732872802266355, guid: 018247255856540428a6c9bc11629902,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1707732872824540353, guid: 018247255856540428a6c9bc11629902,
         type: 3}
@@ -22705,7 +22726,7 @@ PrefabInstance:
         type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[4].m_Target
       value: 
-      objectReference: {fileID: 1703666115}
+      objectReference: {fileID: 1703666110}
     - target: {fileID: 3726340690398498364, guid: cf5e00f95bbc102419b456b1674f47f7,
         type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
@@ -22739,7 +22760,7 @@ PrefabInstance:
     - target: {fileID: 3726340690398498364, guid: cf5e00f95bbc102419b456b1674f47f7,
         type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[4].m_MethodName
-      value: MoveToTransform
+      value: ResetVehicle
       objectReference: {fileID: 0}
     - target: {fileID: 3726340690398498364, guid: cf5e00f95bbc102419b456b1674f47f7,
         type: 3}
@@ -22764,7 +22785,7 @@ PrefabInstance:
     - target: {fileID: 3726340690398498364, guid: cf5e00f95bbc102419b456b1674f47f7,
         type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[4].m_TargetAssemblyTypeName
-      value: MoveObjectToTransform, Assembly-CSharp
+      value: PG.CarController, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 3726340690398498364, guid: cf5e00f95bbc102419b456b1674f47f7,
         type: 3}
@@ -31563,6 +31584,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1171267851522270805, guid: 8d79a18806d7fc24c81e12ac43a364c1,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.287
+      objectReference: {fileID: 0}
+    - target: {fileID: 1230718499071698650, guid: 8d79a18806d7fc24c81e12ac43a364c1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1314693143270409754, guid: 8d79a18806d7fc24c81e12ac43a364c1,
         type: 3}
       propertyPath: m_Drag
@@ -31577,6 +31608,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ImplicitCom
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4967524141831073214, guid: 8d79a18806d7fc24c81e12ac43a364c1,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5036306610066214613, guid: 8d79a18806d7fc24c81e12ac43a364c1,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5514810450754836917, guid: 8d79a18806d7fc24c81e12ac43a364c1,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6037654053613497651, guid: 8d79a18806d7fc24c81e12ac43a364c1,
         type: 3}
@@ -31661,6 +31707,21 @@ PrefabInstance:
     - target: {fileID: 6377623686566131593, guid: 8d79a18806d7fc24c81e12ac43a364c1,
         type: 3}
       propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6758278493604344608, guid: 8d79a18806d7fc24c81e12ac43a364c1,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8933249274703067898, guid: 8d79a18806d7fc24c81e12ac43a364c1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9042809425146278869, guid: 8d79a18806d7fc24c81e12ac43a364c1,
+        type: 3}
+      propertyPath: m_Materials.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9213616652853960229, guid: 8d79a18806d7fc24c81e12ac43a364c1,

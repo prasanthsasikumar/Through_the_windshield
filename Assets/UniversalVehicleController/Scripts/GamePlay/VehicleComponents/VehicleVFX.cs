@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.ParticleSystem;
@@ -99,7 +99,7 @@ namespace PG
                         emitParams.startLifetime = particles.main.startLifetime.constant * sizeAndLifeTimeMultiplier;
                         emitParams.startColor = particles.main.startColor.color;
 
-                        particles.Emit (emitParams, 1);
+                        //particles.Emit (emitParams, 1);
                     }
                 }
 
